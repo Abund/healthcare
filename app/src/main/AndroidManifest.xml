@@ -15,6 +15,9 @@
         <activity android:name=".CaloriesActivity" />
         <activity android:name=".BloodSugarActivity" />
         <activity android:name=".BloodpressureActivity" />
+        <activity android:name=".popups.BloodPressurePopUp"
+            android:theme="@style/AppTheme.CustomTheme">
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
