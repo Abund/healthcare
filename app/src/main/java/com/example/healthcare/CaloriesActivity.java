@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.healthcare.adapter.CalorieAdapter;
 import com.example.healthcare.model.Calorie;
+import com.example.healthcare.popups.CaloriePopUp;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.YAxis;
