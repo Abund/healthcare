@@ -9,15 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BloodPressureAddPage"></activity>
+        <activity android:name=".BloodSugarAddPage"></activity>
+        <activity android:name=".BloodPressureAddPage" />
         <activity android:name=".MedicationDashBoard" />
         <activity android:name=".GoalActivity" />
         <activity android:name=".CaloriesActivity" />
         <activity android:name=".BloodSugarActivity" />
         <activity android:name=".BloodpressureActivity" />
-        <activity android:name=".popups.BloodPressurePopUp"
-            android:theme="@style/AppTheme.CustomTheme">
-        </activity>
+        <activity
+            android:name=".popups.BloodPressurePopUp"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
