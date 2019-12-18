@@ -139,54 +139,54 @@ public class HomeScreen extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).commit();
             }
         });
-
-        bloods.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
-            }
-        });
-
-
-        imageViewCalories.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
-            }
-        });
-        imageViewBloodPressure.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).commit();
-            }
-        });
-        imageViewBloodSugar.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
-            }
-        });
-
-        cal.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
-            }
-        });
-
-        goal.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).commit();
-            }
-        });
-
-        medi.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new MedicationDashBoard()).commit();
-            }
-        });
+//
+//        bloods.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
+//            }
+//        });
+//
+//
+//        imageViewCalories.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
+//            }
+//        });
+//        imageViewBloodPressure.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).commit();
+//            }
+//        });
+//        imageViewBloodSugar.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
+//            }
+//        });
+//
+//        cal.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
+//            }
+//        });
+//
+//        goal.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).commit();
+//            }
+//        });
+//
+//        medi.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new MedicationDashBoard()).commit();
+//            }
+//        });
 
     }
 
@@ -291,47 +291,47 @@ public class HomeScreen extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        //FragmentManager fragmentManager = getSupportFragmentManager();
-
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-            Intent at = new Intent(HomeScreen.this, HomeScreen.class);
-            startActivity(at);
-        } else if (id == R.id.nav_bpressure) {
-            Fragment newFragment =  new BloodpressureActivity();
-//            FragmentTransaction ft = getFragmentManager().beginTransaction();
-//            ft.add(R.id.content_frame, newFragment).commit();
-            replaceFragment(newFragment);
-
-        } else if (id == R.id.nav_bsugar) {
-            Fragment newFragment =  new BloodSugarActivity();
-            replaceFragment(newFragment);
-
-        } else if (id == R.id.nav_calorie) {
-            Fragment newFragment =  new CaloriesActivity();
-            replaceFragment(newFragment);
-
-        } else if (id == R.id.nav_mreminder) {
-            Fragment newFragment =  new MedicationDashBoard();
-            replaceFragment(newFragment);
-
-        } else if (id == R.id.nav_goal) {
-            Fragment newFragment =  new GoalActivity();
-            replaceFragment(newFragment);
-
-        }else if (id == R.id.sign_out) {
-
-            firebaseAuth = FirebaseAuth.getInstance();
-            LoginManager.getInstance().logOut();
-            firebaseAuth.signOut();
-            Intent at = new Intent(HomeScreen.this, MainActivity.class);
-            startActivity(at);
-        }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+//        // Handle navigation view item clicks here.
+//        int id = item.getItemId();
+//        //FragmentManager fragmentManager = getSupportFragmentManager();
+//
+//        if (id == R.id.nav_home) {
+//            // Handle the camera action
+//            Intent at = new Intent(HomeScreen.this, HomeScreen.class);
+//            startActivity(at);
+//        } else if (id == R.id.nav_bpressure) {
+//            Fragment newFragment =  new BloodpressureActivity();
+////            FragmentTransaction ft = getFragmentManager().beginTransaction();
+////            ft.add(R.id.content_frame, newFragment).commit();
+//            replaceFragment(newFragment);
+//
+//        } else if (id == R.id.nav_bsugar) {
+//            Fragment newFragment =  new BloodSugarActivity();
+//            replaceFragment(newFragment);
+//
+//        } else if (id == R.id.nav_calorie) {
+//            Fragment newFragment =  new CaloriesActivity();
+//            replaceFragment(newFragment);
+//
+//        } else if (id == R.id.nav_mreminder) {
+//            Fragment newFragment =  new MedicationDashBoard();
+//            replaceFragment(newFragment);
+//
+//        } else if (id == R.id.nav_goal) {
+//            Fragment newFragment =  new GoalActivity();
+//            replaceFragment(newFragment);
+//
+//        }else if (id == R.id.sign_out) {
+//
+//            firebaseAuth = FirebaseAuth.getInstance();
+//            LoginManager.getInstance().logOut();
+//            firebaseAuth.signOut();
+//            Intent at = new Intent(HomeScreen.this, MainActivity.class);
+//            startActivity(at);
+//        }
+//
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
