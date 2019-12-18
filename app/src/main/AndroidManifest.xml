@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/headericon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CaloriesAddPage"></activity>
+        <activity android:name=".MedicationAddPage"></activity>
+        <activity android:name=".CaloriesAddPage" />
         <activity android:name=".BloodSugarAddPage" />
         <activity android:name=".BloodPressureAddPage" />
         <activity android:name=".MedicationDashBoard" />
@@ -20,11 +21,9 @@
         <activity
             android:name=".popups.BloodPressurePopUp"
             android:theme="@style/AppTheme.CustomTheme" />
-
         <activity
             android:name=".popups.CaloriePopUp"
             android:theme="@style/AppTheme.CustomTheme" />
-
         <activity
             android:name=".popups.BloodSugarPopUp"
             android:theme="@style/AppTheme.CustomTheme" />
