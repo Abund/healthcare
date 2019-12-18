@@ -172,14 +172,14 @@ public class HomeScreen extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
             }
         });
-//
-//        goal.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).commit();
-//            }
-//        });
-//
+
+        goal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).commit();
+            }
+        });
+
         medi.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -316,10 +316,10 @@ public class HomeScreen extends AppCompatActivity
             Fragment newFragment =  new MedicationDashBoard();
             replaceFragment(newFragment);
 
-//        } else if (id == R.id.nav_goal) {
-//            Fragment newFragment =  new GoalActivity();
-//            replaceFragment(newFragment);
-//
+        } else if (id == R.id.nav_goal) {
+            Fragment newFragment =  new GoalActivity();
+            replaceFragment(newFragment);
+
         }
         else if (id == R.id.sign_out) {
 

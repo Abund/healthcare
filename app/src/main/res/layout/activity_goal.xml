@@ -6,4 +6,94 @@
     android:layout_height="match_parent"
     tools:context=".GoalActivity">
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonGA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="257dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/correctgreen"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="80dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView22"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="47dp"-->
+    <!--android:layout_marginLeft="47dp"-->
+    <!--android:layout_marginTop="77dp"-->
+    <!--android:text="Calories"-->
+    <!--android:textSize="25dp"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView23"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="47dp"-->
+    <!--android:layout_marginLeft="47dp"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:text="Measurement"-->
+    <!--android:textSize="20dp"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/textView22" />-->
+
+    <!--<EditText-->
+    <!--android:id="@+id/editText19"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="120dp"-->
+    <!--android:layout_marginEnd="16dp"-->
+    <!--android:layout_marginRight="16dp"-->
+    <!--android:ems="10"-->
+    <!--android:inputType="textPersonName"-->
+    <!--android:text=""-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView27"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="47dp"-->
+    <!--android:layout_marginLeft="47dp"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:text="Start Date"-->
+    <!--android:textSize="20dp"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/textView23" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/textView28"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="45dp"-->
+    <!--android:layout_marginLeft="45dp"-->
+    <!--android:layout_marginTop="23dp"-->
+    <!--android:text="TextView"-->
+    <!--android:textSize="20dp"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/textView27"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/editText19" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewGA"
+        android:layout_width="403dp"
+        android:layout_height="731dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
