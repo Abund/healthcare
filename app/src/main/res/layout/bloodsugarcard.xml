@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".RegistrationPage">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="7dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="150dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--add image-->
+                <ImageView
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    android:id="@+id/imaging"
+                    android:scaleX="1.2"
+                    android:scaleType="fitXY"
+                    android:scaleY="1.2"
+                    android:src="@drawable/bsicon2"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--add corresponding contents-->
+                <TextView
+                    android:id="@+id/dateBloodCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="4dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+                <TextView
+                    android:id="@+id/instBloodCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="4dp"
+
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--second half-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/concentrationBS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="4dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+                <TextView
+                    android:id="@+id/units"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="4dp"
+                    android:text="mg/dL"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
