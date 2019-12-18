@@ -139,13 +139,13 @@ public class HomeScreen extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).commit();
             }
         });
-//
-//        bloods.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
-//            }
-//        });
+
+        bloods.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
+            }
+        });
 //
 //
 //        imageViewCalories.setOnClickListener(new View.OnClickListener(){
@@ -154,18 +154,18 @@ public class HomeScreen extends AppCompatActivity
 //                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
 //            }
 //        });
-//        imageViewBloodPressure.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).commit();
-//            }
-//        });
-//        imageViewBloodSugar.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
-//            }
-//        });
+        imageViewBloodPressure.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).commit();
+            }
+        });
+        imageViewBloodSugar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
+            }
+        });
 //
 //        cal.setOnClickListener(new View.OnClickListener(){
 //            @Override
