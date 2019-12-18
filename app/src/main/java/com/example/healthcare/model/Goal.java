@@ -6,6 +6,7 @@ public class Goal {
     private String goal;
     private String time;
 
+
     public Goal() {
     }
 
