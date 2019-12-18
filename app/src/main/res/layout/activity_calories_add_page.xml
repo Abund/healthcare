@@ -1,0 +1,1837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".CaloriesAddPage">
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Name"/>
+        <EditText
+            android:id="@+id/foodName"
+            android:layout_width="158dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Food Period"/>
+        <AutoCompleteTextView
+            android:id="@+id/foodType"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dateCA"
+                android:layout_width="158dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:ems="10"
+                android:inputType="date"
+                android:hint="Date"
+                android:background="@drawable/back"/>
+
+            <TextView
+                android:id="@+id/timeCA"
+                android:layout_width="158dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:ems="10"
+                android:inputType="time"
+                android:hint="Time"
+                android:background="@drawable/back"/>
+        </LinearLayout>
+
+        <TextView
+            android:textSize="18dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Select Content"/>
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Alchoholic Beverages"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/beerID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/beerName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Beer"/>
+            <Button
+                android:id="@+id/beerInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/beerShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/beerDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="1(356g) can =154 cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/RedWineCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/redName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Red Wine"/>
+            <Button
+                android:id="@+id/redInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/redShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/redDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Smallglass(175ml)=149 cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/spiritID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/spiritName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Spirit"/>
+            <Button
+                android:id="@+id/spiritInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/spiritShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/spiritDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="(35ml)1 Measure = 81 cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/whiteID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/whiteName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="White Wine"/>
+            <Button
+                android:id="@+id/whiteInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/whiteShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/whiteDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Small glass 144 cal(250ml"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Drinks and Juice"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/upID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/upName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="7up"/>
+            <Button
+                android:id="@+id/idInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/idShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/idDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="1 50 bottle = 216 cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/upBigId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/upBigName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="7up"/>
+            <Button
+                android:id="@+id/upBigInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/upBigShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/upBigDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="1 35 bottle = 160 cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/appleJuice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/appleJuiceName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Apple Juice"/>
+            <Button
+                android:id="@+id/appleJuiceInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/appleJuiceShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/appleJuiceDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="200ml small glass=87 cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/grapeJuice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/grapeJuiceName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Grape Juice"/>
+            <Button
+                android:id="@+id/grapeJuiceInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/grapeJuiceShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/grapeJuiceDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="249g 1cup=54 cal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Fruits"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/appleId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/appleName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Apple"/>
+            <Button
+                android:id="@+id/appleInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/appleShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/appleDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="160 medium=95 cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/avacadoId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/avacadoName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Avacado"/>
+            <Button
+                android:id="@+id/avacadoInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/avacadoShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/avacadoDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="150g 1cup=285cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/bananaId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/bananaName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Banana"/>
+            <Button
+                android:id="@+id/bananaInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/bananaShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/bananaDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="118g medium=105cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/cherryId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/cherryName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Cherry"/>
+            <Button
+                android:id="@+id/cherryInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/cherryShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/cherryDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="155g 1cup=77 cals"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/coconutId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/coconutName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Coconut"/>
+            <Button
+                android:id="@+id/coconutInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/coconutShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/coconutDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="45g 1 piece=159g"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Vegetables"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/broId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/broName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Broccoli"/>
+            <Button
+                android:id="@+id/broInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/brocShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/brocDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="91g 1cup=31cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/cabbageId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/cabbageName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Cabbage"/>
+            <Button
+                android:id="@+id/cabbageInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/cabbageShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/cabbageDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="89g 1cup=22cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/carrotId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/carrotName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Carrot"/>
+            <Button
+                android:id="@+id/carrotInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/carrotShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/carrotDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="61g 1medium=25cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/cassavaId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/cassavaName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Cassava"/>
+            <Button
+                android:id="@+id/cassavaInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/cassavaShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/cassavaDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="206g 1cup=328cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/gardenId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/gardenName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Garden egg"/>
+            <Button
+                android:id="@+id/gardenInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/gardenShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/gardenDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="100g 1cup=45g"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Grains and Legumes"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/beanswhiteId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/beansWhiteName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Beans White"/>
+            <Button
+                android:id="@+id/beanswhiteInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/beanswhiteShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/beanswhiteDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="178g 1cup=249cals"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/beansBrownId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/beansBrownName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Brown Beans"/>
+            <Button
+                android:id="@+id/beansBrownInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/beansBrownShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/beansBrownDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="100g 1cup=379cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/oatmealId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/oatmealName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Oat meal"/>
+            <Button
+                android:id="@+id/oatmealInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/oatmealShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/oatmealDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="2349 1cup=158cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/riceWhiteId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/riceWhiteName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Rice white"/>
+            <Button
+                android:id="@+id/riceWhiteInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/riceWhiteShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/riceWhiteDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="185g 1cup=675cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/soyaBeansId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/soyaBeansName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Soya beans"/>
+            <Button
+                android:id="@+id/soyaBeansInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/soyaBeansIdShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/soyaBeansIdDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="100g 1cup=446g"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Nuts"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/almondId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/almondName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Almonds"/>
+            <Button
+                android:id="@+id/almondInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/almondShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/almondDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="1.2g 1almond=7cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/cashewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/cashewName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Cashew"/>
+            <Button
+                android:id="@+id/cashewInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/cashewShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/cashewDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="8.6g 1spoon=49cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/walnutId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/walnutName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Walnut"/>
+            <Button
+                android:id="@+id/walnutInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/walnutShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/walnutDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="28b 1cup=183cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/groundnutId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/groundnutName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Groundnut"/>
+            <Button
+                android:id="@+id/groundnutInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:text="0"
+                android:id="@+id/groundnutShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/groundnutDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="45g 1piece=159cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/coco1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/cocoName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Coconut"/>
+            <Button
+                android:id="@+id/cocoInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/cocoShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/cocoDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="100g 1cup=45g"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Spreads"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/butterId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/butterName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Butter"/>
+            <Button
+                android:id="@+id/butterInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/butterShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/butterDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="14.2g 1tea spoon=102cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/KetchupId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/KetchupName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Ketchup"/>
+            <Button
+                android:id="@+id/KetchupInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/KetchupShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/KetchupDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="17g 1tea spoon=20cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/MargirineId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/MargirineName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Margirine"/>
+            <Button
+                android:id="@+id/MargirineInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/MargirineShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/MargirineDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="14.2g 1spoon=102cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/MayonaiseId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/MayonaiseName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Mayonaise"/>
+            <Button
+                android:id="@+id/MayonaiseInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/MayonaiseShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/MayonaiseDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="13.8g 1spoon=94cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/PeanutId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/PeanutName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Peanut butter"/>
+            <Button
+                android:id="@+id/PeanutInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:text="0"
+                android:id="@+id/PeanutShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/PeanutDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="32g 2spoon=188cal"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Sweeteners"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/honeyId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/honeyName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Honey"/>
+            <Button
+                android:id="@+id/honeyInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/honeyShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/honeyDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="25g 1tea spoon=64cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/RaisinId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/RaisinName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Raisin"/>
+            <Button
+                android:id="@+id/RaisinInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/RaisinShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/RaisinDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="26g 50raisin=78cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/SugarId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/SugarName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Sugar"/>
+            <Button
+                android:id="@+id/SugarInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/SugarShow"
+                android:text="0"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/SugarDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="2.3g 1cube=9cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/GranulatedId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/GranulatedName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Sugar Granulated"/>
+            <Button
+                android:id="@+id/GranulatedInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/GranulatedShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/GranulatedDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="8g 1tea spoon=31cal"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Snacks"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/CupcakeId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/CupcakeName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Cupcake(Icing)"/>
+            <Button
+                android:id="@+id/CupcakeInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/CupcakeShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/CupcakeDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="43g 1cup=155cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/GalaId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/GalaName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Gala"/>
+            <Button
+                android:id="@+id/GalaInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/GalaShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/GalaDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="2.3g 1packet=297cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/ConeId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/ConeName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="IceCream Cone"/>
+            <Button
+                android:id="@+id/ConeInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/ConeShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/ConeDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="4g 1cone=17cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/VanillaId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/VanillaName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="IceCream(Vanilla)"/>
+            <Button
+                android:id="@+id/VanillaInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/VanillaShow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="0"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/VanillaDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="66g half=137cal"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/SamosaId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"/>
+            <TextView
+                android:id="@+id/SamosaName"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="Samosa"/>
+            <Button
+                android:id="@+id/SamosaInc"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="+"/>
+
+            <TextView
+                android:id="@+id/SamosaShow"
+                android:layout_width="35dp"
+                android:text="0"
+                android:layout_height="35dp"
+                android:background="@drawable/back"/>
+
+            <Button
+                android:id="@+id/SamosaDec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="80cal"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calSubmit"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Submit"/>
+
+
+
+
+    </LinearLayout>
+</ScrollView>
