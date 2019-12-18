@@ -29,9 +29,9 @@
         android:id="@+id/lastName"
         android:layout_width="235dp"
         android:layout_height="53dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
         android:ems="10"
@@ -177,7 +177,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup" />
 
-    <TextView
+    <ImageView
+        android:src="@drawable/headericon"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

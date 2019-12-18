@@ -4,35 +4,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_goal"
-            android:icon="@drawable/ic_card_giftcard_black_24dp"
-            android:title="@string/menu_goal" />
-        <item
-            android:id="@+id/nav_mreminder"
-            android:icon="@drawable/ic_access_alarm_black_24dp"
-            android:title="@string/menu_mreminder" />
-        <item
-            android:id="@+id/nav_bpressure"
-            android:icon="@drawable/ic_query_builder_black_24dp"
-            android:title="@string/menu_bpressure" />
-        <item
-            android:id="@+id/nav_bsugar"
-            android:icon="@drawable/ic_touch_app_black_24dp"
-            android:title="@string/menu_bsugar" />
-        <item
-            android:id="@+id/nav_calorie"
-            android:icon="@drawable/ic_directions_run_black_24dp"
-            android:title="@string/menu_calories" />
 
-        <item
-            android:id="@+id/sign_out"
-            android:icon="@drawable/ic_system_update_alt_black_24dp"
-            android:title="@string/menu_logout" />
     </group>
 
 </menu>

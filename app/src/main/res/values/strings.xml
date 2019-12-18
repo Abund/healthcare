@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Applicationtestapp</string>
+    <string name="app_name">HealthCare</string>
     <string name="title_activity_homescreen">HealthCare</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -26,6 +26,6 @@
 
     <!--<string name="facebook_app_id">FACEBOOK-APP-ID</string>-->
     <!--<string name="fb_login_protocol_scheme">fbFACEBOOK-APP-ID</string>-->
-    <string name="facebook_app_id">1884540111689492</string>
-    <string name="fb_login_protocol_scheme">fb1884540111689492</string>
+    <string name="facebook_app_id">802839733496941</string>
+    <string name="fb_login_protocol_scheme">fb802839733496941</string>
 </resources>
