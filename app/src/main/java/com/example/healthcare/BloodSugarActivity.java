@@ -167,8 +167,8 @@ public class BloodSugarActivity extends Fragment {
 
         ArrayList<Entry> yValues = new ArrayList<>();
 
-        float f= (float)data.get(0).getConcentrationSugar();
-        Log.e("eeeeeeeeeeeeeeeeee",""+f);
+//        float f= (float)data.get(0).getConcentrationSugar();
+//        Log.e("eeeeeeeeeeeeeeeeee",""+f);
 
         for(int i =0;i<data.size();i++){
             float f1 = (float)data.get(i).getConcentrationSugar();
