@@ -154,7 +154,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bloodSugarT" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imageViewGo"
         android:layout_width="85dp"
         android:layout_height="96dp"
         android:layout_marginStart="8dp"
@@ -179,6 +179,6 @@
         android:text="Goals"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewGo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

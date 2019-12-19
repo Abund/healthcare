@@ -35,7 +35,7 @@
         <AutoCompleteTextView
             android:id="@+id/foodType"
             android:layout_width="158dp"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
             android:layout_marginStart="28dp"
             android:layout_marginLeft="28dp"/>
 

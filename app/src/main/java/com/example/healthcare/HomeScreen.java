@@ -52,7 +52,7 @@ public class HomeScreen extends AppCompatActivity
 
     private TextView bloodp,bloods,cal,goal,clientName,profileName;
     Button medi;
-    private ImageView imageViewCalories,imageViewBloodPressure,imageViewBloodSugar,imageViewProfile,imageViewHomePageProfile;
+    private ImageView imageViewCalories,imageViewBloodPressure,imageViewBloodSugar,imageViewProfile,imageViewHomePageProfile,imageViewGo;
     FirebaseAuth firebaseAuth;
     FirebaseUser userf;
     DatabaseReference myRef;
@@ -85,6 +85,7 @@ public class HomeScreen extends AppCompatActivity
         bloodp = (TextView) findViewById(R.id.bloodPressureT);
         bloods = (TextView) findViewById(R.id.bloodSugarT);
         imageViewCalories = (ImageView) findViewById(R.id.imageViewCalories);
+        imageViewGo = (ImageView) findViewById(R.id.imageViewGo);
         imageViewBloodPressure = (ImageView) findViewById(R.id.imageViewBloodPressure);
         imageViewBloodSugar = (ImageView) findViewById(R.id.imageViewBloodSugar);
         imageViewHomePageProfile = (ImageView) findViewById(R.id.imageViewHomePageProfile);
@@ -151,6 +152,13 @@ public class HomeScreen extends AppCompatActivity
             @Override
             public void onClick(View v){
                 getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
+            }
+        });
+
+        imageViewGo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).commit();
             }
         });
         imageViewBloodPressure.setOnClickListener(new View.OnClickListener(){
