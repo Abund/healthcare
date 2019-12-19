@@ -66,14 +66,10 @@
         android:id="@+id/measuredPointer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="194dp"
-        android:layout_marginRight="194dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginLeft="164dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/ic_arrow_drop_down_24px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/measured"
         app:layout_constraintTop_toBottomOf="@+id/sugarConcentration" />
 
@@ -172,15 +168,11 @@
         android:id="@+id/timeImgBS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginBottom="32dp"
         android:src="@drawable/ic_signal_cellular_4_bar_24px"
         app:layout_constraintBottom_toTopOf="@+id/notesBS"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/timeBS" />
 
     <EditText
