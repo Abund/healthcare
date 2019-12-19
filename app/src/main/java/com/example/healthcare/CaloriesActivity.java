@@ -164,7 +164,7 @@ public class CaloriesActivity extends Fragment {
         ArrayList<Entry> yValues = new ArrayList<>();
 
         //data.get(0).getCalorieUnits();
-        Log.e("eeeeeeeeeeeeeeeeee",""+data.get(0).getCalorieUnits());
+        //Log.e("eeeeeeeeeeeeeeeeee",""+data.get(0).getCalorieUnits());
 
         for(int i =0;i<data.size();i++){
             float f1 = (float)data.get(i).getCalorieUnits();
