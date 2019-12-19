@@ -64,7 +64,7 @@ public class MedicationAddPage extends AppCompatActivity implements DatePickerDi
         pills.setAdapter(com1);
         pills.setThreshold(0);
 
-        EndDate.setAdapter(com);
+        EndDate.setAdapter(com2);
         EndDate.setThreshold(0);
 
         medImageDrop.setOnClickListener(new View.OnClickListener(){

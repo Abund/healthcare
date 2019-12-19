@@ -58,15 +58,11 @@
         android:id="@+id/dateImgMD"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="230dp"
-        android:layout_marginRight="230dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
         android:layout_marginBottom="28dp"
         android:src="@drawable/ic_signal_cellular_4_bar_24px"
         app:layout_constraintBottom_toTopOf="@+id/instructionMedi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/dateMedi" />
 
     <TextView
@@ -196,14 +192,10 @@
         android:id="@+id/medImageUnitDrop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="191dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="192dp"
         android:src="@drawable/ic_arrow_drop_down_24px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/pills"
         app:layout_constraintTop_toTopOf="parent" />
 
