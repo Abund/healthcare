@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthcare.adapter.MedicationAdapter;
@@ -34,6 +35,7 @@ public class MedicationDashBoard extends Fragment {
     private ArrayList<String> mData;
     private DatabaseReference myRef;
     private MedicationAdapter medicationAdapter;
+    private TextView alternate;
     View view;
 
 //    @Override
@@ -54,6 +56,7 @@ public class MedicationDashBoard extends Fragment {
         mRecycler.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
         myRef = FirebaseDatabase.getInstance().getReference().child("Medication").child(FirebaseAuth.getInstance().getUid());
         myRef.keepSynced(true);
+        alternate =(TextView) view.findViewById(R.id.alternateMD);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -67,6 +70,10 @@ public class MedicationDashBoard extends Fragment {
                 }
                 medicationAdapter = new MedicationAdapter(data,getActivity().getBaseContext());
                 mRecycler.setAdapter(medicationAdapter);
+                if(data.isEmpty()){
+                    alternate.setVisibility(View.VISIBLE);
+                    alternate.setText("Please add your data");
+                }
             }
 
             @Override
