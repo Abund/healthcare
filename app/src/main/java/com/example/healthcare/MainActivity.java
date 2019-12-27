@@ -36,7 +36,7 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     Button signIn,googleSignIn;
-    TextView register;
+    TextView register,forgetPassword;
     EditText email,password;
     FirebaseAuth firebaseAuth;
     SignInButton signInButton;
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         signInButton = (SignInButton) findViewById(R.id.googleSignInButton);
         register = (TextView) findViewById(R.id.register);
         email = (EditText) findViewById(R.id.loginEmail);
+        forgetPassword=(TextView) findViewById(R.id.forgetPassword);
         password = (EditText) findViewById(R.id.loginPassword);
         loginButton = findViewById(R.id.facebookLoginButton);
         loginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
@@ -153,6 +154,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         register.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent at = new Intent(MainActivity.this, RegistrationPage.class);
+                startActivity(at);
+            }
+        });
+
+        forgetPassword.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent at = new Intent(MainActivity.this, RegistrationPage.class);
