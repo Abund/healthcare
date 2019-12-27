@@ -3,23 +3,29 @@
     package="com.example.healthcare">
 
     <application
+        android:name=".LocalStorage"
         android:allowBackup="true"
         android:icon="@mipmap/headericon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/headericon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".LocalStorage">
-        <activity android:name=".GoalAddPage"
-            android:parentActivityName=".GoalActivity"></activity>
-        <activity android:name=".MedicationAddPage"
-            android:parentActivityName=".MedicationDashBoard"/>
-        <activity android:name=".CaloriesAddPage"
-            android:parentActivityName=".CaloriesActivity"/>
-        <activity android:name=".BloodSugarAddPage"
-            android:parentActivityName=".BloodSugarActivity"/>
-        <activity android:name=".BloodPressureAddPage"
-            android:parentActivityName=".BloodpressureActivity"/>
+        android:theme="@style/AppTheme">
+        <activity android:name=".ForgetPassword"></activity>
+        <activity
+            android:name=".GoalAddPage"
+            android:parentActivityName=".GoalActivity" />
+        <activity
+            android:name=".MedicationAddPage"
+            android:parentActivityName=".MedicationDashBoard" />
+        <activity
+            android:name=".CaloriesAddPage"
+            android:parentActivityName=".CaloriesActivity" />
+        <activity
+            android:name=".BloodSugarAddPage"
+            android:parentActivityName=".BloodSugarActivity" />
+        <activity
+            android:name=".BloodPressureAddPage"
+            android:parentActivityName=".BloodpressureActivity" />
         <activity android:name=".MedicationDashBoard" />
         <activity android:name=".GoalActivity" />
         <activity android:name=".CaloriesActivity" />
