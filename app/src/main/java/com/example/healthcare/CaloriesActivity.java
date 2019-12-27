@@ -33,6 +33,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class CaloriesActivity extends Fragment {
     private ArrayList<String> mData;
     private DatabaseReference myRef;
     private CalorieAdapter calorieAdapter;
-    private Button suggestion;
+    private Button suggestion,clearCS;
     private TextView alternate;
     View view;
 
@@ -111,6 +112,8 @@ public class CaloriesActivity extends Fragment {
                 startActivity(new Intent(getActivity().getBaseContext(), CaloriePopUp.class));
             }
         });
+
+
         return view;
     }
 
