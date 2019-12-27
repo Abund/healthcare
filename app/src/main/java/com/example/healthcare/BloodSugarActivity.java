@@ -60,6 +60,7 @@ public class BloodSugarActivity extends Fragment {
 
         lineChart =(LineChart) view.findViewById(R.id.lineChart2);
         alternate =(TextView) view.findViewById(R.id.alternate);
+        clearBS  =(Button) view.findViewById(R.id.clearBS);
         suggestionBS =(Button) view.findViewById(R.id.suggestionBS);
         mRecycler = (RecyclerView) view.findViewById(R.id.recyclerViewBSA);
         //lineChart.setOnChartGestureListener(BloodpressureActivity.this);
