@@ -84,6 +84,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
+    <Button
+        android:id="@+id/clearBS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginRight="167dp"
+        android:layout_marginBottom="3dp"
+        android:text="clear all"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewBSA"
+        app:layout_constraintEnd_toStartOf="@+id/suggestionBS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineChart2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
