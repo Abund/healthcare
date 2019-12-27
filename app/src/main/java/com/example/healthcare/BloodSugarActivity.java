@@ -116,7 +116,30 @@ public class BloodSugarActivity extends Fragment {
             }
         });
 
+        clearBS.setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View view) {
+                myRef= FirebaseDatabase.getInstance().getReference().child("BloodSugar").child(FirebaseAuth.getInstance().getUid());
+                //Query mQuery = myRef.orderByChild("diastolicPressure").equalTo(data.get(viewHolder.getAdapterPosition()).getDiastolicPressure());
+                //Query mQuery1 = myRef;
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds:dataSnapshot.getChildren()){
+                            ds.getRef().removeValue();
+                        }
+                        Intent at = new Intent(getActivity().getBaseContext(), HomeScreen.class);
+                        startActivity(at);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
         return view;
     }
 
