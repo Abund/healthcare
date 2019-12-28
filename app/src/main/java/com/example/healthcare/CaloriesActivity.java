@@ -61,6 +61,7 @@ public class CaloriesActivity extends Fragment {
         alternate =(TextView) view.findViewById(R.id.alternateCA);
         mRecycler = (RecyclerView) view.findViewById(R.id.recyclerViewCA);
         suggestion = (Button) view.findViewById(R.id.suggestionCAS);
+        clearCS=(Button) view.findViewById(R.id.clearCS);
         //lineChart.setOnChartGestureListener(BloodpressureActivity.this);
         //lineChart.setOnChartValueSelectedListener(BloodpressureActivity.this);
 
