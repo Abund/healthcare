@@ -21,11 +21,14 @@ import com.example.healthcare.adapter.CalorieAdapter;
 import com.example.healthcare.model.Calorie;
 import com.example.healthcare.popups.CaloriePopUp;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -169,24 +172,24 @@ public class CaloriesActivity extends Fragment {
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
 
-//        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
+        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
 
         //final String[] months = new String[data.size()];
-//        for(int i =0;i<data.size();i++){
-//            months[i]=data.get(i).getDate();
-//            //yValues.add(new Entry(i, data.get(i).getDiastolicPressure()));
-//        }
+        for(int i =0;i<data.size();i++){
+            months[i]=data.get(i).getDate();
+            //yValues.add(new Entry(i, data.get(i).getDiastolicPressure()));
+        }
 
-//        ValueFormatter formatter = new ValueFormatter() {
-//            @Override
-//            public String getAxisLabel(float value, AxisBase axis) {
-//                return months[(int) value];
-//            }
-//        };
-//        XAxis xAxis = lineChart.getXAxis();
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-//        xAxis.setGranularity(1f);
-//        xAxis.setValueFormatter(formatter);
+        ValueFormatter formatter = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return months[(int) value];
+            }
+        };
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(formatter);
 
         ArrayList<Entry> yValues = new ArrayList<>();
 
