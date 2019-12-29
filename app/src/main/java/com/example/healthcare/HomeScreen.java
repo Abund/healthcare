@@ -42,6 +42,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -96,15 +99,38 @@ public class HomeScreen extends AppCompatActivity
         firebaseAuth =FirebaseAuth.getInstance();
         userf=firebaseAuth.getCurrentUser();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user!=null){
             if(user.getPhotoUrl()!=null){
-                Glide.with(this)
-                        .load(user.getPhotoUrl())
-                        .into(imageViewProfile);
-                Glide.with(this)
-                        .load(user.getPhotoUrl())
-                        .into(imageViewHomePageProfile);
+//                Glide.with(this)
+//                        .load(user.getPhotoUrl())
+//                        .into(imageViewProfile);
+//                Glide.with(this)
+//                        .load(user.getPhotoUrl())
+//                        .into(imageViewHomePageProfile);
+                Picasso.get().load(user.getPhotoUrl()).networkPolicy(NetworkPolicy.OFFLINE).into(imageViewProfile, new Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Picasso.get().load(user.getPhotoUrl()).into(imageViewProfile);
+                    }
+                });
+
+                Picasso.get().load(user.getPhotoUrl()).networkPolicy(NetworkPolicy.OFFLINE).into(imageViewHomePageProfile, new Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Picasso.get().load(user.getPhotoUrl()).into(imageViewHomePageProfile);
+                    }
+                });
             }
         }
 
