@@ -148,7 +148,7 @@ public class CaloriesActivity extends Fragment {
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
 
-        LimitLine upperLimit = new LimitLine(130f,"DANGER");
+        LimitLine upperLimit = new LimitLine(2100f,"DANGER");
         upperLimit.setLineWidth(4f);
         upperLimit.enableDashedLine(10f,10f,0);
         upperLimit.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
@@ -172,9 +172,9 @@ public class CaloriesActivity extends Fragment {
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
 
-        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
+//        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
 
-        //final String[] months = new String[data.size()];
+        final String[] months = new String[data.size()];
         for(int i =0;i<data.size();i++){
             months[i]=data.get(i).getDate();
             //yValues.add(new Entry(i, data.get(i).getDiastolicPressure()));
@@ -183,6 +183,9 @@ public class CaloriesActivity extends Fragment {
         ValueFormatter formatter = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
+                if(value==-1){
+                    return months[(int) 0.0];
+                }
                 return months[(int) value];
             }
         };
@@ -196,6 +199,9 @@ public class CaloriesActivity extends Fragment {
         //data.get(0).getCalorieUnits();
         //Log.e("eeeeeeeeeeeeeeeeee",""+data.get(0).getCalorieUnits());
 
+        if(data.size()==1) {
+            yValues.add(new Entry(-1, 120));
+        }
         for(int i =0;i<data.size();i++){
             float f1 = (float)data.get(i).getCalorieUnits();
             yValues.add(new Entry(i, f1));

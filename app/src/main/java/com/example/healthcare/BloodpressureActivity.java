@@ -183,9 +183,9 @@ public class BloodpressureActivity extends Fragment {
         leftAxis.setDrawLimitLinesBehindData(true);
         lineChart.getAxisRight().setEnabled(false);
 
-        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
+//        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
 
-        //final String[] months = new String[data.size()];
+        final String[] months = new String[data.size()+1];
         for(int i =0;i<data.size();i++){
             months[i]=data.get(i).getDate();
             //yValues.add(new Entry(i, data.get(i).getDiastolicPressure()));
@@ -194,6 +194,9 @@ public class BloodpressureActivity extends Fragment {
         ValueFormatter formatter = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
+                if(value==-1){
+                    return months[(int) 0.0];
+                }
                 return months[(int) value];
             }
         };
@@ -207,6 +210,9 @@ public class BloodpressureActivity extends Fragment {
         float f= (float)data1.get(0).getSystolicPressure();
         Log.e("eeeeeeeeeeeeeeeeee",""+f);
 
+        if(data.size()==1) {
+            yValues.add(new Entry(-1, 120));
+        }
         for(int i =0;i<data1.size();i++){
             float f1 = (float)data1.get(i).getSystolicPressure();
             yValues.add(new Entry(i, f1));

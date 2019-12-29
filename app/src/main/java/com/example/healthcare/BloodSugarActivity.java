@@ -176,9 +176,9 @@ public class BloodSugarActivity extends Fragment {
         lineChart.setScaleEnabled(true);
 
 
-        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
+//        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
 
-        //final String[] months = new String[data.size()];
+        final String[] months = new String[data.size()];
         for(int i =0;i<data.size();i++){
             months[i]=data.get(i).getDate();
             //yValues.add(new Entry(i, data.get(i).getDiastolicPressure()));
@@ -187,6 +187,9 @@ public class BloodSugarActivity extends Fragment {
         ValueFormatter formatter = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
+                if(value==-1){
+                    return months[(int) 0.0];
+                }
                 return months[(int) value];
             }
         };
@@ -200,6 +203,9 @@ public class BloodSugarActivity extends Fragment {
 //        float f= (float)data.get(0).getConcentrationSugar();
 //        Log.e("eeeeeeeeeeeeeeeeee",""+f);
 
+        if(data.size()==1) {
+            yValues.add(new Entry(-1, 120));
+        }
         for(int i =0;i<data.size();i++){
             float f1 = (float)data.get(i).getConcentrationSugar();
             yValues.add(new Entry(i, f1));
