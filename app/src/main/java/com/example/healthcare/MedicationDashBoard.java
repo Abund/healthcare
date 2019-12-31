@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class MedicationDashBoard extends Fragment {
     private DatabaseReference myRef;
     private MedicationAdapter medicationAdapter;
     private TextView alternate;
+    private Button medicationClearAll;
     View view;
 
 //    @Override
@@ -57,6 +59,7 @@ public class MedicationDashBoard extends Fragment {
         myRef = FirebaseDatabase.getInstance().getReference().child("Medication").child(FirebaseAuth.getInstance().getUid());
         myRef.keepSynced(true);
         alternate =(TextView) view.findViewById(R.id.alternateMD);
+        medicationClearAll=(Button) view.findViewById(R.id.medicationClearAll);
 
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -90,6 +93,30 @@ public class MedicationDashBoard extends Fragment {
             public void onClick(View view) {
                 Intent at = new Intent(getActivity().getBaseContext(), MedicationAddPage.class);
                 startActivity(at);
+            }
+        });
+        medicationClearAll.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                myRef= FirebaseDatabase.getInstance().getReference().child("Medication").child(FirebaseAuth.getInstance().getUid());
+                //Query mQuery = myRef.orderByChild("diastolicPressure").equalTo(data.get(viewHolder.getAdapterPosition()).getDiastolicPressure());
+                //Query mQuery1 = myRef;
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds:dataSnapshot.getChildren()){
+                            ds.getRef().removeValue();
+                        }
+                        Intent at = new Intent(getActivity().getBaseContext(), HomeScreen.class);
+                        startActivity(at);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
