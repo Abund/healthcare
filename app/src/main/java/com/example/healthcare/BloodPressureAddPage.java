@@ -134,10 +134,7 @@ public class BloodPressureAddPage extends AppCompatActivity implements DatePicke
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(BloodPressureAddPage.this,"Successful",Toast.LENGTH_SHORT).show();
                         finish();
-//                        FragmentManager fragmentManager =getSupportFragmentManager();
-//                        fragmentManager.beginTransaction().replace(R.id.pAddPage, new BloodpressureActivity()).commit();
-//                        Intent at = new Intent(BloodPressureAddPage.this, HomeScreen.class);
-//                        startActivity(at);
+
                     }
                 });
 //                Intent at = new Intent(BloodPressureAddPage.this, BloodpressureActivity.class);

@@ -28,4 +28,14 @@
     <!--<string name="fb_login_protocol_scheme">fbFACEBOOK-APP-ID</string>-->
     <string name="facebook_app_id">802839733496941</string>
     <string name="fb_login_protocol_scheme">fb802839733496941</string>
+
+    <string-array name="days_of_week">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
 </resources>

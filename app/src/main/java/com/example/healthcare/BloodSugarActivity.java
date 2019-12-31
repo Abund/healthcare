@@ -71,6 +71,7 @@ public class BloodSugarActivity extends Fragment {
 
 
         data = new ArrayList<BloodSugar>();
+        //bloodSugarAdapter.notifyDataSetChanged();
         mRecycler.setHasFixedSize(true);
         mRecycler.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
         myRef = FirebaseDatabase.getInstance().getReference().child("BloodSugar").child(FirebaseAuth.getInstance().getUid());

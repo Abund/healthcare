@@ -134,13 +134,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/endDateMedi" />
 
-    <AutoCompleteTextView
+    <TextView
         android:id="@+id/repeat"
-        android:layout_width="197dp"
-        android:layout_height="wrap_content"
+        android:layout_width="172dp"
+        android:layout_height="45dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:text=""
+        android:background="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
@@ -218,6 +219,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
         android:text=""
+        android:inputType="number"
         android:hint="Number of Days"
         app:layout_constraintStart_toEndOf="@+id/endDateMedi"
         app:layout_constraintTop_toBottomOf="@+id/pills" />
@@ -238,4 +240,25 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_check_black_24dp"
         tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/medicationTime"
+        android:layout_width="172dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="29dp"
+        android:background="@drawable/back"
+        android:ems="10"
+        android:hint="Time"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/notesMD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/repeat"
+        app:layout_constraintTop_toBottomOf="@+id/unitsMd" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

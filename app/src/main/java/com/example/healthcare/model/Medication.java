@@ -10,11 +10,12 @@ public class Medication {
     private String numberOfDays;
     private String notes;
     private String repeats;
+    private String medicationTime;
 
     public Medication() {
     }
 
-    public Medication(String medicationName, String starteDate, String instructions, String units, String endDate, String numberOfDays, String notes, String repeats) {
+    public Medication(String medicationTime,String medicationName, String starteDate, String instructions, String units, String endDate, String numberOfDays, String notes, String repeats) {
         this.medicationName = medicationName;
         this.starteDate = starteDate;
         this.instructions = instructions;
@@ -23,6 +24,7 @@ public class Medication {
         this.numberOfDays = numberOfDays;
         this.notes = notes;
         this.repeats = repeats;
+        this.medicationTime=medicationTime;
     }
 
     public String getMedicationName() {
@@ -87,5 +89,12 @@ public class Medication {
 
     public void setRepeats(String repeats) {
         this.repeats = repeats;
+    }
+    public String getMedicationTime() {
+        return medicationTime;
+    }
+
+    public void setMedicationTime(String medicationTime) {
+        this.medicationTime = medicationTime;
     }
 }

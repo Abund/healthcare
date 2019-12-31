@@ -58,6 +58,7 @@ public class MedicationDashBoard extends Fragment {
         myRef.keepSynced(true);
         alternate =(TextView) view.findViewById(R.id.alternateMD);
 
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -70,6 +71,7 @@ public class MedicationDashBoard extends Fragment {
                 }
                 medicationAdapter = new MedicationAdapter(data,getActivity().getBaseContext());
                 mRecycler.setAdapter(medicationAdapter);
+                medicationAdapter.notifyDataSetChanged();
                 if(data.isEmpty()){
                     alternate.setVisibility(View.VISIBLE);
                     alternate.setText("Please add your data");
@@ -90,8 +92,10 @@ public class MedicationDashBoard extends Fragment {
                 startActivity(at);
             }
         });
+
         return view;
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
