@@ -3,11 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fast facts on calorie intake and use"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recommended calorie intake depends on factors such as age,size,height,sex,lifestyle, and
+overall general health."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Eating a big breakfast could help with weight reduction and maintenance."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The brain uses around 20 percent of energy used in the human body"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A 500-calorie meal consisting of fruits and vegetables has more health benefits and will
+keepyou feeling full fo longer than a 500 calorie snack of pop"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tips"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Keeping calorie intake within certain limit will not ensure a health diet, as different foods have
+different effects on the body.
+After consuming carbohydrate(carbs), insulin levels will rise significantly more compared with eating fats or protein. Some carbs in particular get into the blood stream in the form of
+sugar,or glucose, much faster than other.
+Refined flour is a fast card, while legumes are solower. slow- release carbs are better for body weight control and
+overall health than fast carbs.A 500 calorie meal of fish or meat,salad and some olive oil,followed by fruits is, more
+healthful and will stave off hunger for longer than a 500 calorie snack of popcorn with butter or toffee"/>
 </LinearLayout>
