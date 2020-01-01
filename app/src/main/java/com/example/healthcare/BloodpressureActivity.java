@@ -49,6 +49,7 @@ public class BloodpressureActivity extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
     private ArrayList<BloodPressure> data;
+    private ArrayList<String> bloodPressureKey;
     private ArrayList<String> mData;
     private DatabaseReference myRef;
     private Bloodpressureadapter bloodpressureadapter;
@@ -74,9 +75,10 @@ public class BloodpressureActivity extends Fragment {
         //getFragmentManager().beginTransaction().detach(this).attach(this).commit();
 
         data = new ArrayList<BloodPressure>();
+        bloodPressureKey= new ArrayList<>();
 
         mRecycler.setHasFixedSize(true);
-        mRecycler.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
+        mRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         //  myRef = FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid()).push();
         myRefOnline = FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid());
         myRefOnline.keepSynced(true);
@@ -87,25 +89,26 @@ public class BloodpressureActivity extends Fragment {
                 if (dataSnapshot.getChildrenCount() == 0){
                     return;
                 }
+                data.clear();
                 for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
 
                     BloodPressure bloodPressure = dataSnapshot1.getValue(BloodPressure.class);
                     data.add(bloodPressure);
+                    bloodPressureKey.add(dataSnapshot1.getKey());
                 }
                 lineChart=setUpChart(data,lineChart);
 
-                Log.e("eeeeeeeeeeeeeeeeee",data.toString());
+                Log.e("eeeeeeeeeeeeeeeeee1",data.toString());
                 if(data.isEmpty()){
                     alternate.setVisibility(View.VISIBLE);
                     alternate.setText("Please enter your readings");
                 }
-                //Toast.makeText(getActivity().getBaseContext(),data.toString(),Toast.LENGTH_SHORT).show();
-                bloodpressureadapter = new Bloodpressureadapter(data,getActivity().getBaseContext());
-                bloodpressureadapter.notifyDataSetChanged();
-                //new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
+                bloodpressureadapter = new Bloodpressureadapter(data,getActivity());
+                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
+                lineChart.notifyDataSetChanged();
+                lineChart.invalidate();
                 mRecycler.setAdapter(bloodpressureadapter);
-
-
+                mRecycler.invalidate();
             }
 
             @Override
@@ -126,7 +129,11 @@ public class BloodpressureActivity extends Fragment {
         suggestionBP.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity().getBaseContext(), BloodPressurePopUp.class));
+                //if (data.isEmpty()) {
+               //     Toast.makeText(getActivity().getBaseContext(), "Please enter a reading", Toast.LENGTH_SHORT).show();
+                //} else{
+                    startActivity(new Intent(getActivity().getBaseContext(), BloodPressurePopUp.class));
+                //}
             }
         });
 
@@ -134,24 +141,10 @@ public class BloodpressureActivity extends Fragment {
 
             @Override
             public void onClick(View view) {
-                myRef= FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid());
-                //Query mQuery = myRef.orderByChild("diastolicPressure").equalTo(data.get(viewHolder.getAdapterPosition()).getDiastolicPressure());
-                //Query mQuery1 = myRef;
-                myRefOnline.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot ds:dataSnapshot.getChildren()){
-                            ds.getRef().removeValue();
-                        }
-                        Intent at = new Intent(getActivity().getBaseContext(), HomeScreen.class);
-                        startActivity(at);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid());
+                databaseReference.removeValue();
+                Intent at = new Intent(getActivity().getBaseContext(), HomeScreen.class);
+                startActivity(at);
             }
         });
         return view;
@@ -207,8 +200,8 @@ public class BloodpressureActivity extends Fragment {
 
         ArrayList<Entry> yValues = new ArrayList<>();
 
-        float f= (float)data1.get(0).getSystolicPressure();
-        Log.e("eeeeeeeeeeeeeeeeee",""+f);
+//        float f= (float)data1.get(0).getSystolicPressure();
+//        Log.e("eeeeeeeeeeeeeeeeee2",""+f);
 
         if(data.size()==1) {
             yValues.add(new Entry(-1, 120));
@@ -216,7 +209,7 @@ public class BloodpressureActivity extends Fragment {
         for(int i =0;i<data1.size();i++){
             float f1 = (float)data1.get(i).getSystolicPressure();
             yValues.add(new Entry(i, f1));
-            Log.e("eeeeeeeeeeeeeeeeee",""+data1.get(i).getSystolicPressure());
+            Log.e("eeeeeeeeeeeeeeeeee3",""+data1.get(i).getSystolicPressure());
         }
 
         LineDataSet set1 = new LineDataSet(yValues, "Data set 1");
@@ -248,33 +241,36 @@ public class BloodpressureActivity extends Fragment {
                 Toast.LENGTH_SHORT).show();
     }
 
-//    ItemTouchHelper.SimpleCallback simpleCallback= new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
-//        @Override
-//        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-//            return false;
-//        }
-//
-//        @Override
-//        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-//            myRefOnline = FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid());
-//            Query mQuery = myRefOnline.orderByChild("diastolicPressure").equalTo(data.get(viewHolder.getAdapterPosition()).getDiastolicPressure());
-//            Query mQuery1 = myRefOnline;
-//            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    //for(DataSnapshot ds:dataSnapshot.getChildren()){
-//                        dataSnapshot.getRef().removeValue();
-//                    //}
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            });
-//            data.remove(viewHolder.getAdapterPosition());
-//            bloodpressureadapter.notifyDataSetChanged();
-//        }
-//    };
+    ItemTouchHelper.SimpleCallback simpleCallback= new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
+            myRefOnline = FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid())
+                    .child(bloodPressureKey.get(viewHolder.getAdapterPosition()));
+            Query mQuery1 = myRefOnline;
+            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    //for(DataSnapshot ds:dataSnapshot.getChildren()){
+                        dataSnapshot.getRef().removeValue();
+                        data.remove(viewHolder.getAdapterPosition());
+                        bloodpressureadapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                        bloodpressureadapter.notifyDataSetChanged();
+
+                    //}
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+    };
 
 }

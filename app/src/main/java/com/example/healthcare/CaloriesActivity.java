@@ -91,6 +91,8 @@ public class CaloriesActivity extends Fragment {
                     alternate.setVisibility(View.VISIBLE);
                     alternate.setText("Please enter your readings");
                 }
+                lineChart.notifyDataSetChanged();
+                lineChart.invalidate();
             }
 
             @Override
@@ -121,24 +123,10 @@ public class CaloriesActivity extends Fragment {
 
             @Override
             public void onClick(View view) {
-                myRef= FirebaseDatabase.getInstance().getReference().child("Calorie").child(FirebaseAuth.getInstance().getUid());
-                //Query mQuery = myRef.orderByChild("diastolicPressure").equalTo(data.get(viewHolder.getAdapterPosition()).getDiastolicPressure());
-                //Query mQuery1 = myRef;
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot ds:dataSnapshot.getChildren()){
-                            ds.getRef().removeValue();
-                        }
-                        Intent at = new Intent(getActivity().getBaseContext(), HomeScreen.class);
-                        startActivity(at);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Calorie").child(FirebaseAuth.getInstance().getUid());
+                databaseReference.removeValue();
+                Intent at = new Intent(getActivity().getBaseContext(), HomeScreen.class);
+                startActivity(at);
             }
         });
         return view;

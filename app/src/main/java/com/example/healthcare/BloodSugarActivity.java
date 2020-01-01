@@ -94,6 +94,8 @@ public class BloodSugarActivity extends Fragment {
                     alternate.setVisibility(View.VISIBLE);
                     alternate.setText("Please add your data");
                 }
+                lineChart.notifyDataSetChanged();
+                lineChart.invalidate();
             }
 
             @Override
@@ -125,24 +127,10 @@ public class BloodSugarActivity extends Fragment {
 
             @Override
             public void onClick(View view) {
-                myRef= FirebaseDatabase.getInstance().getReference().child("BloodSugar").child(FirebaseAuth.getInstance().getUid());
-                //Query mQuery = myRef.orderByChild("diastolicPressure").equalTo(data.get(viewHolder.getAdapterPosition()).getDiastolicPressure());
-                //Query mQuery1 = myRef;
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot ds:dataSnapshot.getChildren()){
-                            ds.getRef().removeValue();
-                        }
-                        Intent at = new Intent(getActivity().getBaseContext(), HomeScreen.class);
-                        startActivity(at);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("BloodSugar").child(FirebaseAuth.getInstance().getUid());
+                databaseReference.removeValue();
+                Intent at = new Intent(getActivity().getBaseContext(), HomeScreen.class);
+                startActivity(at);
             }
         });
         return view;
