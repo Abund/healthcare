@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -38,12 +40,8 @@ public class MedicationDashBoard extends Fragment {
     private MedicationAdapter medicationAdapter;
     private TextView alternate;
     private Button medicationClearAll;
+    private ArrayList<String> medicationKey;
     View view;
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_medication_dash_board);
 
     @Nullable
     @Override
@@ -54,6 +52,7 @@ public class MedicationDashBoard extends Fragment {
         mRecycler = (RecyclerView) view.findViewById(R.id.recyclerViewMA1);
 
         data = new ArrayList<Medication>();
+        medicationKey= new ArrayList<>();
         mRecycler.setHasFixedSize(true);
         mRecycler.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
         myRef = FirebaseDatabase.getInstance().getReference().child("Medication").child(FirebaseAuth.getInstance().getUid());
@@ -65,14 +64,17 @@ public class MedicationDashBoard extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                data.clear();
                 for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
                     if (dataSnapshot.getChildrenCount() == 0){
                         return;
                     }
                     Medication medication = dataSnapshot1.getValue(Medication.class);
                     data.add(medication);
+                    medicationKey.add(dataSnapshot1.getKey());
                 }
                 medicationAdapter = new MedicationAdapter(data,getActivity().getBaseContext());
+                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
                 mRecycler.setAdapter(medicationAdapter);
                 medicationAdapter.notifyDataSetChanged();
                 if(data.isEmpty()){
@@ -127,4 +129,34 @@ public class MedicationDashBoard extends Fragment {
         Toast.makeText(getActivity(), "Fragment : Refresh called.",
                 Toast.LENGTH_SHORT).show();
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback= new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
+            myRef = FirebaseDatabase.getInstance().getReference().child("Medication").child(FirebaseAuth.getInstance().getUid())
+                    .child(medicationKey.get(viewHolder.getAdapterPosition()));
+            Query mQuery1 = myRef;
+            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    dataSnapshot.getRef().removeValue();
+                    data.remove(viewHolder.getAdapterPosition());
+                    medicationAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                    medicationAdapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+    };
 }
