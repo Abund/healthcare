@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,6 +53,7 @@ public class CaloriesActivity extends Fragment {
     private DatabaseReference myRef;
     private CalorieAdapter calorieAdapter;
     private Button suggestion,clearCS;
+    private ArrayList<String> calorieKey;
     private TextView alternate;
     View view;
 
@@ -69,6 +71,7 @@ public class CaloriesActivity extends Fragment {
         //lineChart.setOnChartValueSelectedListener(BloodpressureActivity.this);
 
         data = new ArrayList<Calorie>();
+        calorieKey= new ArrayList<>();
         mRecycler.setHasFixedSize(true);
         mRecycler.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
         myRef = FirebaseDatabase.getInstance().getReference().child("Calorie").child(FirebaseAuth.getInstance().getUid());
@@ -77,15 +80,18 @@ public class CaloriesActivity extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                data.clear();
                 for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
                     if (dataSnapshot.getChildrenCount() == 0){
                         return;
                     }
                     Calorie calorie = dataSnapshot1.getValue(Calorie.class);
                     data.add(calorie);
+                    calorieKey.add(dataSnapshot1.getKey());
                 }
                 lineChart=sendata(lineChart,data);
                 calorieAdapter = new CalorieAdapter(data,getActivity().getBaseContext());
+                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
                 mRecycler.setAdapter(calorieAdapter);
                 if(data.isEmpty()){
                     alternate.setVisibility(View.VISIBLE);
@@ -223,4 +229,34 @@ public class CaloriesActivity extends Fragment {
         Toast.makeText(getActivity(), "Fragment : Refresh called.",
                 Toast.LENGTH_SHORT).show();
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback= new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
+            myRef = FirebaseDatabase.getInstance().getReference().child("Calorie").child(FirebaseAuth.getInstance().getUid())
+                    .child(calorieKey.get(viewHolder.getAdapterPosition()));
+            Query mQuery1 = myRef;
+            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    dataSnapshot.getRef().removeValue();
+                    data.remove(viewHolder.getAdapterPosition());
+                    calorieAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                    calorieAdapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+    };
 }
