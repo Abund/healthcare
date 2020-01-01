@@ -133,10 +133,9 @@ public class BloodPressureAddPage extends AppCompatActivity implements DatePicke
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(BloodPressureAddPage.this,"Successful",Toast.LENGTH_SHORT).show();
-                        finish();
-
                     }
                 });
+                finish();
 //                Intent at = new Intent(BloodPressureAddPage.this, BloodpressureActivity.class);
 //                startActivity(at);
             }

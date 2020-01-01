@@ -129,11 +129,11 @@ public class BloodpressureActivity extends Fragment {
         suggestionBP.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                //if (data.isEmpty()) {
-               //     Toast.makeText(getActivity().getBaseContext(), "Please enter a reading", Toast.LENGTH_SHORT).show();
-                //} else{
+                if (data.isEmpty()) {
+                    Toast.makeText(getActivity().getBaseContext(), "Please enter a reading", Toast.LENGTH_SHORT).show();
+                } else{
                     startActivity(new Intent(getActivity().getBaseContext(), BloodPressurePopUp.class));
-                //}
+                }
             }
         });
 

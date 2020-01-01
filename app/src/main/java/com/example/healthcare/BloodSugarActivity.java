@@ -124,8 +124,11 @@ public class BloodSugarActivity extends Fragment {
 
             @Override
             public void onClick(View view) {
-
-                startActivity(new Intent(getActivity().getBaseContext(), BloodSugarPopUp.class));
+                if (data.isEmpty()) {
+                    Toast.makeText(getActivity().getBaseContext(), "Please enter a reading", Toast.LENGTH_SHORT).show();
+                } else{
+                    startActivity(new Intent(getActivity().getBaseContext(), BloodSugarPopUp.class));
+                }
             }
         });
 

@@ -121,7 +121,11 @@ public class CaloriesActivity extends Fragment {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity().getBaseContext(), CaloriePopUp.class));
+                if (data.isEmpty()) {
+                    Toast.makeText(getActivity().getBaseContext(), "Please enter a reading", Toast.LENGTH_SHORT).show();
+                } else{
+                    startActivity(new Intent(getActivity().getBaseContext(), CaloriePopUp.class));
+                }
             }
         });
 
