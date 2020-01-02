@@ -15,8 +15,14 @@ import android.widget.Toast;
 
 import com.example.healthcare.model.Goal;
 import com.example.healthcare.model.User;
+import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -34,6 +40,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 public class RegistrationPage extends AppCompatActivity {
 
@@ -58,51 +69,56 @@ public class RegistrationPage extends AppCompatActivity {
         firstName = (EditText) findViewById(R.id.firstName);
         lastName = (EditText) findViewById(R.id.lastName);
         email = (EditText) findViewById(R.id.email);
+        signInButton = (SignInButton) findViewById(R.id.ggoglr);
         password = (EditText) findViewById(R.id.password);
+        loginButton = findViewById(R.id.facey);
+        loginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
 
-        //        accessTokenTracker = new AccessTokenTracker() {
-//            // This method is invoked everytime access token changes
-//            @Override
-//            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-//                useLoginInformation(currentAccessToken);
-//
-//            }
-//        };
+                accessTokenTracker = new AccessTokenTracker() {
+            // This method is invoked everytime access token changes
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                useLoginInformation(currentAccessToken);
+
+            }
+        };
 
 
 
-//        // Creating CallbackManager
-//        callbackManager = CallbackManager.Factory.create();
-//
-//        // Registering CallbackManager with the LoginButton
-//        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-//            @Override
-//            public void onSuccess(LoginResult loginResult) {
-//                // Retrieving access token using the LoginResult
-//                //AccessToken accessToken = loginResult.getAccessToken();
-//                AccessToken accessToken = loginResult.getAccessToken();
-//                useLoginInformation(accessToken);
-//            }
-//            @Override
-//            public void onCancel() {
-//            }
-//            @Override
-//            public void onError(FacebookException error) {
-//            }
-//        });
+        // Creating CallbackManager
+        callbackManager = CallbackManager.Factory.create();
 
-//        accessTokenTracker = new AccessTokenTracker() {
-//            @Override
-//            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-//                // currentAccessToken is null if the user is logged out
-//                if (currentAccessToken != null) {
-//                    // AccessToken is not null implies user is logged in and hence we sen the GraphRequest
-//                    useLoginInformation(currentAccessToken);
-//                }else{
-//                    //displayName.setText("Not Logged In");
-//                }
-//            }
-//        };
+        // Registering CallbackManager with the LoginButton
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // Retrieving access token using the LoginResult
+                //AccessToken accessToken = loginResult.getAccessToken();
+                AccessToken accessToken = loginResult.getAccessToken();
+                useLoginInformation(accessToken);
+                Intent at = new Intent(RegistrationPage.this, HomeScreen.class);
+                startActivity(at);
+            }
+            @Override
+            public void onCancel() {
+            }
+            @Override
+            public void onError(FacebookException error) {
+            }
+        });
+
+        accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                // currentAccessToken is null if the user is logged out
+                if (currentAccessToken != null) {
+                    // AccessToken is not null implies user is logged in and hence we sen the GraphRequest
+                    useLoginInformation(currentAccessToken);
+                }else{
+                    //displayName.setText("Not Logged In");
+                }
+            }
+        };
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -191,6 +207,13 @@ public class RegistrationPage extends AppCompatActivity {
 //                Log.w("Ch3", "Failed to read value.", error.toException());
 //            }
 //        });
+
+        signInButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                signIn();
+            }
+        });
     }
 
     private void signIn() {
@@ -218,49 +241,49 @@ public class RegistrationPage extends AppCompatActivity {
         }
     }
 
-    //    public void onStart() {
-//        super.onStart();
-//        //This starts the access token tracking
-//        accessTokenTracker.startTracking();
-//        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-//        if (accessToken != null) {
-//            useLoginInformation(accessToken);
-//        }
-//    }
-//    public void onDestroy() {
-//        super.onDestroy();
-//        // We stop the tracking before destroying the activity
-//        accessTokenTracker.stopTracking();
-//    }
+        public void onStart() {
+        super.onStart();
+        //This starts the access token tracking
+        accessTokenTracker.startTracking();
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken != null) {
+            useLoginInformation(accessToken);
+        }
+    }
+    public void onDestroy() {
+        super.onDestroy();
+        // We stop the tracking before destroying the activity
+        accessTokenTracker.stopTracking();
+    }
 
-    //private void useLoginInformation(AccessToken accessToken) {
-//        /**
-//         Creating the GraphRequest to fetch user details
-//         1st Param - AccessToken
-//         2nd Param - Callback (which will be invoked once the request is successful)
-//         **/
-//        GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
-//            //OnCompleted is invoked once the GraphRequest is successful
-//            @Override
-//            public void onCompleted(JSONObject object, GraphResponse response) {
-//                try {
-//                    String name = object.getString("name");
-//                    String email = object.getString("email");
-//                    String image = object.getJSONObject("picture").getJSONObject("data").getString("url");
-////                    displayName.setText(name);
-////                    emailID.setText(email);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//        // We set parameters to the GraphRequest using a Bundle.
-//        Bundle parameters = new Bundle();
-//        parameters.putString("fields", "id,name,email,picture.width(200)");
-//        request.setParameters(parameters);
-//        // Initiate the GraphRequest
-//        request.executeAsync();
-//    }
+    private void useLoginInformation(AccessToken accessToken) {
+        /**
+         Creating the GraphRequest to fetch user details
+         1st Param - AccessToken
+         2nd Param - Callback (which will be invoked once the request is successful)
+         **/
+        GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+            //OnCompleted is invoked once the GraphRequest is successful
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+                try {
+                    String name = object.getString("name");
+                    String email = object.getString("email");
+                    String image = object.getJSONObject("picture").getJSONObject("data").getString("url");
+//                    displayName.setText(name);
+//                    emailID.setText(email);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        // We set parameters to the GraphRequest using a Bundle.
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,picture.width(200)");
+        request.setParameters(parameters);
+        // Initiate the GraphRequest
+        request.executeAsync();
+    }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
@@ -287,7 +310,7 @@ public class RegistrationPage extends AppCompatActivity {
                 });
     }
 
-    public  void updateUI(FirebaseUser user){
+    public  void updateUI(FirebaseUser user1){
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (acct != null) {
             String personName = acct.getDisplayName();
@@ -296,7 +319,37 @@ public class RegistrationPage extends AppCompatActivity {
             String personEmail = acct.getEmail();
             String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
-            Toast.makeText(RegistrationPage.this,personFamilyName+"Login failed",Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistrationPage.this,personFamilyName+"Registration Successful",Toast.LENGTH_SHORT).show();
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference myRef = database.getReference("users");
+            final DatabaseReference myRef1 = database.getReference("goal");
+
+            User user = new User();
+            user.setEmail(personEmail);
+            user.setFirstName(personGivenName);
+            user.setLastName(personFamilyName);
+
+            Goal goal = new Goal();
+            goal.setGoal("2700");
+            goal.setDate("2019");
+            myRef1.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(goal).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                }
+            });
+
+            myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(RegistrationPage.this,"successful",Toast.LENGTH_SHORT).show();
+                    Intent at = new Intent(RegistrationPage.this, HomeScreen.class);
+                    startActivity(at);
+                }
+            });
+            myRef.keepSynced(true);
+
+
         }
 
     }

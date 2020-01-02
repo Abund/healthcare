@@ -114,7 +114,7 @@
     <!--app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
     <com.google.android.gms.common.SignInButton
-        android:id="@+id/button5"
+        android:id="@+id/ggoglr"
         android:layout_width="232dp"
         android:layout_height="43dp"
         android:layout_marginStart="96dp"
@@ -125,7 +125,7 @@
         android:background="@color/correctgreen"
         android:drawableLeft="@drawable/google_logo"
         android:text="Continue with Google"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintBottom_toTopOf="@+id/facey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -149,7 +149,7 @@
     <!--app:layout_constraintTop_toBottomOf="@+id/button5" />-->
 
     <com.facebook.login.widget.LoginButton
-        android:id="@+id/button6"
+        android:id="@+id/facey"
         android:layout_width="235dp"
         android:layout_height="30dp"
         android:layout_marginStart="93dp"
