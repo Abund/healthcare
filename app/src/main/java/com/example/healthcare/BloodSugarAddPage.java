@@ -122,9 +122,10 @@ public class BloodSugarAddPage extends AppCompatActivity implements DatePickerDi
                 myRef.setValue(bloodSugar).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        finish();
+
                     }
                 });
+                finish();
             }
         });
     }

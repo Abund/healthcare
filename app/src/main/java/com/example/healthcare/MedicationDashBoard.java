@@ -73,14 +73,19 @@ public class MedicationDashBoard extends Fragment {
                     data.add(medication);
                     medicationKey.add(dataSnapshot1.getKey());
                 }
-                medicationAdapter = new MedicationAdapter(data,getActivity().getBaseContext());
-                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
-                mRecycler.setAdapter(medicationAdapter);
-                medicationAdapter.notifyDataSetChanged();
+                medicationAdapter = new MedicationAdapter(data,getActivity());
                 if(data.isEmpty()){
                     alternate.setVisibility(View.VISIBLE);
                     alternate.setText("Please add your data");
+                }else {
+                    alternate.setVisibility(View.INVISIBLE);
+                    alternate.setText("");
                 }
+                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
+                mRecycler.setAdapter(medicationAdapter);
+                medicationAdapter.notifyDataSetChanged();
+                mRecycler.invalidate();
+
             }
 
             @Override

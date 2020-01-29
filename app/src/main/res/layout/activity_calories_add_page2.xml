@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".CaloriesAddPage2">
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Name"/>
+
+        <EditText
+            android:id="@+id/foodName"
+            android:layout_width="158dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Food Period"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/foodType"
+            android:layout_width="158dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dateCA"
+                android:layout_width="158dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:ems="10"
+                android:inputType="date"
+                android:hint="Date"
+                android:background="@drawable/back"/>
+
+            <TextView
+                android:id="@+id/timeCA"
+                android:layout_width="158dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:ems="10"
+                android:inputType="time"
+                android:hint="Time"
+                android:background="@drawable/back"/>
+        </LinearLayout>
+
+        <TextView
+            android:textSize="18dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="158dp"
+            android:layout_height="30dp"
+            android:text="Select Content"/>
+
+        <Button
+            android:id="@+id/alcoholB"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Alchoholic Beverages" />
+
+        <TextView
+            android:id="@+id/alcoholBTv"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+        <Button
+            android:id="@+id/drinkJ"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Drink and Juice" />
+
+        <TextView
+            android:id="@+id/drinkJV"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+        <Button
+            android:id="@+id/fruits1"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Fruits" />
+
+        <TextView
+            android:id="@+id/fruits1V"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+        <Button
+            android:id="@+id/vegi"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Vegetables" />
+
+        <TextView
+            android:id="@+id/vegi1"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+        <Button
+            android:id="@+id/grainL"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Grains and Legumes" />
+
+        <TextView
+            android:id="@+id/grainL1"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+        <Button
+            android:id="@+id/nut1"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Nuts" />
+
+        <TextView
+            android:id="@+id/nut11"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+        <Button
+            android:id="@+id/spread1"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Spreads" />
+
+        <TextView
+            android:id="@+id/spreadV"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+        <Button
+            android:id="@+id/swt"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Sweeteners" />
+
+        <TextView
+            android:id="@+id/swt1"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+        <Button
+            android:id="@+id/snk1"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="281dp"
+            android:layout_height="46dp"
+            android:text="Snack" />
+
+        <TextView
+            android:id="@+id/snkV"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click to view items" />
+
+<!--        <Button-->
+<!--            android:id="@+id/button2"-->
+<!--            android:layout_marginStart="28dp"-->
+<!--            android:layout_marginLeft="28dp"-->
+<!--            android:layout_width="281dp"-->
+<!--            android:layout_height="46dp"-->
+<!--            android:text="Alchoholic Beverages" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView28"-->
+<!--            android:layout_marginStart="28dp"-->
+<!--            android:layout_marginLeft="28dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Click to view items" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/button2"-->
+<!--            android:layout_marginStart="28dp"-->
+<!--            android:layout_marginLeft="28dp"-->
+<!--            android:layout_width="281dp"-->
+<!--            android:layout_height="46dp"-->
+<!--            android:text="Alchoholic Beverages" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView28"-->
+<!--            android:layout_marginStart="28dp"-->
+<!--            android:layout_marginLeft="28dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Click to view items" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/button2"-->
+<!--            android:layout_marginStart="28dp"-->
+<!--            android:layout_marginLeft="28dp"-->
+<!--            android:layout_width="281dp"-->
+<!--            android:layout_height="46dp"-->
+<!--            android:text="Alchoholic Beverages" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView28"-->
+<!--            android:layout_marginStart="28dp"-->
+<!--            android:layout_marginLeft="28dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Click to view items" />-->
+
+    </LinearLayout>
+</ScrollView>

@@ -57,6 +57,7 @@ public class MedicationAddPage extends AppCompatActivity implements DatePickerDi
     boolean[] checkedItems;
     String[] listItems;
     ArrayList<Integer> mUserItems= new ArrayList<>();
+    ArrayList<String> listAlarm = new ArrayList<String>();
 
 //    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -161,6 +162,8 @@ public class MedicationAddPage extends AppCompatActivity implements DatePickerDi
                             item=item+listItems[mUserItems.get(i)];
                             if(i!=mUserItems.size()-1){
                                 item = item + ", ";
+                                //clock alarm days
+                                listAlarm.add(item);
                             }
                         }
                         repeat.setText(item);
@@ -241,16 +244,39 @@ public class MedicationAddPage extends AppCompatActivity implements DatePickerDi
                 myRef.setValue(medication).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        finish();
+                        //finish();
                         //getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new MedicationDashBoard()).commit();
                     }
                 });
+                finish();
 
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
                 Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
-                PendingIntent broadcast=PendingIntent.getBroadcast(getApplicationContext(),0,intent,0);
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,reminder.getTimeInMillis(),AlarmManager.INTERVAL_DAY,broadcast);
+                PendingIntent broadcast =PendingIntent.getBroadcast(getApplicationContext(),0,intent,0);
+
+                for(int i=0;i<listAlarm.size();i++){
+
+                    if(listAlarm.get(i)=="Monday"){
+                        reminder.set(Calendar.DAY_OF_WEEK,2);
+                    }else if(listAlarm.get(i)=="Tuesday"){
+                        reminder.set(Calendar.DAY_OF_WEEK,3);
+                    }else if(listAlarm.get(i)=="Wednesday"){
+                        reminder.set(Calendar.DAY_OF_WEEK,4);
+                    }else if(listAlarm.get(i)=="Thursday"){
+                        reminder.set(Calendar.DAY_OF_WEEK,5);
+                    }else if(listAlarm.get(i)=="Friday"){
+                        reminder.set(Calendar.DAY_OF_WEEK,6);
+                    }else if(listAlarm.get(i)=="Saturday"){
+                        reminder.set(Calendar.DAY_OF_WEEK,7);
+                    }else if(listAlarm.get(i)=="Sunday"){
+                        reminder.set(Calendar.DAY_OF_WEEK,1);
+                    }
+                    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,reminder.getTimeInMillis(),AlarmManager.INTERVAL_DAY,broadcast);
+                }
+//                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//                Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+//                PendingIntent broadcast =PendingIntent.getBroadcast(getApplicationContext(),0,intent,0);
+//                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,reminder.getTimeInMillis(),AlarmManager.INTERVAL_DAY,broadcast);
                 //alarmManager.set(AlarmManager.RTC_WAKEUP,reminder.getTimeInMillis(),broadcast);
             }
         });

@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -59,6 +60,7 @@ public class HomeScreen extends AppCompatActivity
     FirebaseAuth firebaseAuth;
     FirebaseUser userf;
     DatabaseReference myRef;
+    boolean closeApp;
     private int TAKE_IMAGE_CODE=10001;
     private  static final String TAG="HomeScreenActivity";
 
@@ -163,61 +165,61 @@ public class HomeScreen extends AppCompatActivity
         bloodp.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).addToBackStack(null).commit();
             }
         });
 
         bloods.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).addToBackStack(null).commit();
             }
         });
 
         imageViewCalories.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).addToBackStack(null).commit();
             }
         });
 
         imageViewGo.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).addToBackStack(null).commit();
             }
         });
         imageViewBloodPressure.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodpressureActivity()).addToBackStack(null).commit();
             }
         });
         imageViewBloodSugar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new BloodSugarActivity()).addToBackStack(null).commit();
             }
         });
 
         cal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new CaloriesActivity()).addToBackStack(null).commit();
             }
         });
 
         goal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new GoalActivity()).addToBackStack(null).commit();
             }
         });
 
         medi.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new MedicationDashBoard()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.content_frame,new MedicationDashBoard()).addToBackStack(null).commit();
             }
         });
 
@@ -225,11 +227,41 @@ public class HomeScreen extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+////        if(closeApp==true){
+////            Intent intent = new Intent(Intent.ACTION_MAIN);
+////            intent.addCategory(Intent.CATEGORY_HOME);
+////            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+////            startActivity(intent);
+////            finish();
+////            System.exit(0);
+////        }
+////        closeApp=true;
+//        //Toast.makeText(HomeScreen.this,"Please press back again to exit",Toast.LENGTH_SHORT).show();
+//            super.onBackPressed();
+////        new Handler().postDelayed(new Runnable() {
+////            @Override
+////            public void run() {
+////                closeApp=false;
+////            }
+////        },3000);
+//
+//        }
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if(count==0){
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            System.exit(0);
             super.onBackPressed();
+        }else {
+            getSupportFragmentManager().popBackStack();
         }
     }
 
@@ -306,6 +338,8 @@ public class HomeScreen extends AppCompatActivity
         return true;
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -381,6 +415,6 @@ public class HomeScreen extends AppCompatActivity
         fragmentTransaction.replace(R.id.content_frame, destFragment);
 
         // Commit the Fragment replace action.
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
     }
 }

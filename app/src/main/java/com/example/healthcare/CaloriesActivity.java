@@ -90,15 +90,19 @@ public class CaloriesActivity extends Fragment {
                     calorieKey.add(dataSnapshot1.getKey());
                 }
                 lineChart=sendata(lineChart,data);
-                calorieAdapter = new CalorieAdapter(data,getActivity().getBaseContext());
-                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
-                mRecycler.setAdapter(calorieAdapter);
                 if(data.isEmpty()){
                     alternate.setVisibility(View.VISIBLE);
                     alternate.setText("Please enter your readings");
+                }else {
+                    alternate.setVisibility(View.INVISIBLE);
+                    alternate.setText("");
                 }
+                calorieAdapter = new CalorieAdapter(data,getActivity());
+                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
+                mRecycler.setAdapter(calorieAdapter);
                 lineChart.notifyDataSetChanged();
                 lineChart.invalidate();
+                mRecycler.invalidate();
             }
 
             @Override
@@ -172,7 +176,7 @@ public class CaloriesActivity extends Fragment {
 
 //        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
 
-        final String[] months = new String[data.size()];
+        final String[] months = new String[data.size()+1000];
         for(int i =0;i<data.size();i++){
             months[i]=data.get(i).getDate();
             //yValues.add(new Entry(i, data.get(i).getDiastolicPressure()));
@@ -242,24 +246,33 @@ public class CaloriesActivity extends Fragment {
 
         @Override
         public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
-            myRef = FirebaseDatabase.getInstance().getReference().child("Calorie").child(FirebaseAuth.getInstance().getUid())
+//            myRef = FirebaseDatabase.getInstance().getReference().child("Calorie").child(FirebaseAuth.getInstance().getUid())
+//                    .child(calorieKey.get(viewHolder.getAdapterPosition()));
+//            Query mQuery1 = myRef;
+//            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    dataSnapshot.getRef().removeValue();
+//                    data.remove(viewHolder.getAdapterPosition());
+//                    calorieAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+//                    calorieAdapter.notifyDataSetChanged();
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+
+            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("Calorie").child(FirebaseAuth.getInstance().getUid())
                     .child(calorieKey.get(viewHolder.getAdapterPosition()));
-            Query mQuery1 = myRef;
-            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    dataSnapshot.getRef().removeValue();
-                    data.remove(viewHolder.getAdapterPosition());
-                    calorieAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-                    calorieAdapter.notifyDataSetChanged();
 
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+            calorieKey.remove(viewHolder.getAdapterPosition());
+            data.remove(viewHolder.getAdapterPosition());
+            calorieAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+            calorieAdapter.notifyDataSetChanged();
+            databaseReference.removeValue();
 
         }
     };

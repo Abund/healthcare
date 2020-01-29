@@ -92,16 +92,21 @@ public class BloodSugarActivity extends Fragment {
                     data.add(bloodSugar);
                     bloodSugarKey.add(dataSnapshot1.getKey());
                 }
-                lineChart=sendata(lineChart,data);
-                bloodSugarAdapter = new BloodSugarAdapter(data,getActivity());
-                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
-                mRecycler.setAdapter(bloodSugarAdapter);
+                lineChart=sendata(data,lineChart);
                 if(data.isEmpty()){
                     alternate.setVisibility(View.VISIBLE);
                     alternate.setText("Please add your data");
+                }else {
+                    alternate.setVisibility(View.INVISIBLE);
+                    alternate.setText("");
                 }
+                bloodSugarAdapter = new BloodSugarAdapter(data,getActivity());
+                new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
+                mRecycler.setAdapter(bloodSugarAdapter);
                 lineChart.notifyDataSetChanged();
                 lineChart.invalidate();
+                mRecycler.invalidate();
+
             }
 
             @Override
@@ -145,7 +150,7 @@ public class BloodSugarActivity extends Fragment {
         return view;
     }
 
-    private LineChart sendata(LineChart lineChart,ArrayList<BloodSugar> data) {
+    private LineChart sendata(ArrayList<BloodSugar> data1,LineChart lineChart) {
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
 
@@ -173,9 +178,9 @@ public class BloodSugarActivity extends Fragment {
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
 
-        final String[] months = new String[data.size()];
-        for(int i =0;i<data.size();i++){
-            months[i]=data.get(i).getDate();
+        final String[] months = new String[data1.size()+1000];
+        for(int i =0;i<data1.size();i++){
+            months[i]=data1.get(i).getDate();
             //yValues.add(new Entry(i, data.get(i).getDiastolicPressure()));
         }
 
@@ -195,13 +200,13 @@ public class BloodSugarActivity extends Fragment {
 
         ArrayList<Entry> yValues = new ArrayList<>();
 
-        if(data.size()==1) {
+        if(data1.size()==1) {
             yValues.add(new Entry(-1, 120));
         }
-        for(int i =0;i<data.size();i++){
-            float f1 = (float)data.get(i).getConcentrationSugar();
+        for(int i =0;i<data1.size();i++){
+            float f1 = (float)data1.get(i).getConcentrationSugar();
             yValues.add(new Entry(i, f1));
-            Log.e("eeeeeeeeeeeeeeeeee",""+data.get(i).getConcentrationSugar());
+            Log.e("eeeeeeeeeeeeeeeeee",""+data1.get(i).getConcentrationSugar());
         }
 
         LineDataSet set1 = new LineDataSet(yValues,"Data set 1");
@@ -210,8 +215,8 @@ public class BloodSugarActivity extends Fragment {
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
 
-        LineData data1 = new LineData(dataSets);
-        lineChart.setData(data1);
+        LineData data = new LineData(dataSets);
+        lineChart.setData(data);
         return lineChart;
     }
 
@@ -241,24 +246,33 @@ public class BloodSugarActivity extends Fragment {
 
         @Override
         public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
-            myRef = FirebaseDatabase.getInstance().getReference().child("BloodSugar").child(FirebaseAuth.getInstance().getUid())
+//            myRef = FirebaseDatabase.getInstance().getReference().child("BloodSugar").child(FirebaseAuth.getInstance().getUid())
+//                    .child(bloodSugarKey.get(viewHolder.getAdapterPosition()));
+//            Query mQuery1 = myRef;
+//            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    dataSnapshot.getRef().removeValue();
+//                    data.remove(viewHolder.getAdapterPosition());
+//                    bloodSugarAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+//                    bloodSugarAdapter.notifyDataSetChanged();
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+
+            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("BloodSugar").child(FirebaseAuth.getInstance().getUid())
                     .child(bloodSugarKey.get(viewHolder.getAdapterPosition()));
-            Query mQuery1 = myRef;
-            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    dataSnapshot.getRef().removeValue();
-                    data.remove(viewHolder.getAdapterPosition());
-                    bloodSugarAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-                    bloodSugarAdapter.notifyDataSetChanged();
 
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+            bloodSugarKey.remove(viewHolder.getAdapterPosition());
+            data.remove(viewHolder.getAdapterPosition());
+            bloodSugarAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+            bloodSugarAdapter.notifyDataSetChanged();
+            databaseReference.removeValue();
 
         }
     };

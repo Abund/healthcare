@@ -1824,9 +1824,10 @@ public class CaloriesAddPage extends AppCompatActivity implements DatePickerDial
                 myRef.setValue(calorie).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        finish();
+
                     }
                 });
+                finish();
             }
         });
 

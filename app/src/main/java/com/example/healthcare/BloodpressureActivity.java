@@ -86,12 +86,11 @@ public class BloodpressureActivity extends Fragment {
         myRefOnline.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getChildrenCount() == 0){
-                    return;
-                }
                 data.clear();
                 for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-
+                    if (dataSnapshot.getChildrenCount() == 0){
+                        return;
+                    }
                     BloodPressure bloodPressure = dataSnapshot1.getValue(BloodPressure.class);
                     data.add(bloodPressure);
                     bloodPressureKey.add(dataSnapshot1.getKey());
@@ -102,12 +101,15 @@ public class BloodpressureActivity extends Fragment {
                 if(data.isEmpty()){
                     alternate.setVisibility(View.VISIBLE);
                     alternate.setText("Please enter your readings");
+                }else {
+                    alternate.setVisibility(View.INVISIBLE);
+                    alternate.setText("");
                 }
                 bloodpressureadapter = new Bloodpressureadapter(data,getActivity());
                 new ItemTouchHelper(simpleCallback).attachToRecyclerView(mRecycler);
+                mRecycler.setAdapter(bloodpressureadapter);
                 lineChart.notifyDataSetChanged();
                 lineChart.invalidate();
-                mRecycler.setAdapter(bloodpressureadapter);
                 mRecycler.invalidate();
             }
 
@@ -178,9 +180,9 @@ public class BloodpressureActivity extends Fragment {
 
 //        final String[] months = new String[]{"Feb", "Feb", "Mar", "Apr", "Mar", "Apr"};
 
-        final String[] months = new String[data.size()+1];
-        for(int i =0;i<data.size();i++){
-            months[i]=data.get(i).getDate();
+        final String[] months = new String[data1.size()+1000];
+        for(int i =0;i<data1.size();i++){
+            months[i]=data1.get(i).getDate();
             //yValues.add(new Entry(i, data.get(i).getDiastolicPressure()));
         }
 
@@ -203,7 +205,7 @@ public class BloodpressureActivity extends Fragment {
 //        float f= (float)data1.get(0).getSystolicPressure();
 //        Log.e("eeeeeeeeeeeeeeeeee2",""+f);
 
-        if(data.size()==1) {
+        if(data1.size()==1) {
             yValues.add(new Entry(-1, 120));
         }
         for(int i =0;i<data1.size();i++){
@@ -249,26 +251,39 @@ public class BloodpressureActivity extends Fragment {
 
         @Override
         public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
-            myRefOnline = FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid())
+//            myRefOnline = FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid())
+//                    .child(bloodPressureKey.get(viewHolder.getAdapterPosition()));
+//            Query mQuery1 = myRefOnline;
+
+            DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("BloodPressure").child(FirebaseAuth.getInstance().getUid())
                     .child(bloodPressureKey.get(viewHolder.getAdapterPosition()));
-            Query mQuery1 = myRefOnline;
-            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    //for(DataSnapshot ds:dataSnapshot.getChildren()){
-                        dataSnapshot.getRef().removeValue();
-                        data.remove(viewHolder.getAdapterPosition());
-                        bloodpressureadapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-                        bloodpressureadapter.notifyDataSetChanged();
 
-                    //}
-                }
+            Log.e("eeeeeeeeeeeeeeeeee2",""+viewHolder.getAdapterPosition());
+            bloodPressureKey.remove(viewHolder.getAdapterPosition());
+            data.remove(viewHolder.getAdapterPosition());
+            bloodpressureadapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+            bloodpressureadapter.notifyDataSetChanged();
+            databaseReference.removeValue();
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
-            });
+//            mQuery1.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    //for(DataSnapshot ds:dataSnapshot.getChildren()){
+//                        dataSnapshot.getRef().removeValue();
+//                        bloodPressureKey.remove(viewHolder.getAdapterPosition());
+//                        data.remove(viewHolder.getAdapterPosition());
+//                        bloodpressureadapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+//                        bloodpressureadapter.notifyDataSetChanged();
+//
+//                    //}
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
 
         }
     };
