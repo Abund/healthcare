@@ -3,6 +3,7 @@ package com.example.healthcare;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -21,8 +22,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +52,7 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +67,8 @@ public class HomeScreen extends AppCompatActivity
     DatabaseReference myRef;
     boolean closeApp;
     private int TAKE_IMAGE_CODE=10001;
+    private static  final  int PICK_IMAGE=1;
+    Uri imageuri;
     private  static final String TAG="HomeScreenActivity";
 
 
@@ -100,6 +107,19 @@ public class HomeScreen extends AppCompatActivity
         clientName = (TextView) findViewById(R.id.clientName);
         firebaseAuth =FirebaseAuth.getInstance();
         userf=firebaseAuth.getCurrentUser();
+
+        ListView listView = new ListView(this);
+        List<String> data = new ArrayList<>();
+        data.add("Camera");
+        data.add("Gallery");
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
+        listView.setAdapter(adapter);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeScreen.this);
+        builder.setCancelable(true);
+        builder.setView(listView);
+        final AlertDialog dialog=builder.create();
+
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user!=null){
@@ -155,9 +175,30 @@ public class HomeScreen extends AppCompatActivity
         imageViewProfile.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(intent.resolveActivity(getPackageManager())!=null){
-                    startActivityForResult(intent,TAKE_IMAGE_CODE);
+                dialog.show();
+//                Intent intent= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                if(intent.resolveActivity(getPackageManager())!=null){
+//                    startActivityForResult(intent,TAKE_IMAGE_CODE);
+//                }
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String choice = adapter.getItem(i);
+                if(choice.equalsIgnoreCase("Camera")){
+                    Intent intent= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    if(intent.resolveActivity(getPackageManager())!=null){
+                        startActivityForResult(intent,TAKE_IMAGE_CODE);
+                    }
+                    dialog.dismiss();
+                }else{
+                    Intent gallery = new Intent();
+                    gallery.setType("image/*");
+                    gallery.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(gallery,"select picture"),PICK_IMAGE);
+                    dialog.dismiss();
                 }
             }
         });
@@ -273,6 +314,22 @@ public class HomeScreen extends AppCompatActivity
                 case RESULT_OK:
                     Bitmap bitmap =(Bitmap) data.getExtras().get("data");
                     imageViewProfile.setImageBitmap(bitmap);
+                    handleUpload(bitmap);
+            }
+        }else if(requestCode==PICK_IMAGE){
+            //if(data.getData()!= null){
+
+            //}
+            switch (resultCode){
+                case RESULT_OK:
+                    Bitmap bitmap = null;
+                    try {
+                        imageuri = data.getData();
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),imageuri);
+                        imageViewProfile.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     handleUpload(bitmap);
             }
         }
